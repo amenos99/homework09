@@ -1,0 +1,7 @@
+---
+# tasks file for git
+- name: repo cloned
+  git:
+    repo: "{{ repo_url }}"
+    clone: yes
+    dest: "{{ workspace }}"

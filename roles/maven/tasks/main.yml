@@ -1,0 +1,6 @@
+---
+# tasks file for maven
+
+- name: Build sample app
+  shell: mvn package chdir="{{ workspace }}"
+

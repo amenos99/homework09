@@ -1,0 +1,10 @@
+---
+# tasks file for tomcat
+
+- name: run tomcat 
+  script: ./bin/catalina.sh start
+  async: 8080
+  
+  notify:
+    - restart tomcat
+       

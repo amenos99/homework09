@@ -1,0 +1,29 @@
+---
+- name: create WAR on build server
+  hosts: create
+  become: yes
+  vars:
+    repo_url: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    workspace: ~/src/boxfuse-sample-java-war-hello
+
+  roles:
+    - common
+    - git
+    - maven
+    
+- name: running WAR on productive server
+  hosts: prod
+  become: yes
+  vars:
+    workspace: ~/src/boxfuse-sample-java-war-hello
+
+- name: copy app to production server
+  copy:
+  src: "{{ workspace }}/target/hello-1.0.war"
+  dest: "/opt/tomcat/webapps/hello-1.0.war"
+  force: yes
+  mode: 0755
+
+  roles:
+    - tomcat
+

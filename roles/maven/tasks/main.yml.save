@@ -1,0 +1,11 @@
+---
+# tasks file for maven
+
+- name: run maven
+    maven_artifact:
+      artifact_id: hello-1.0
+      extension: war 
+dest: /var/lib/tomcat8/webapps
+
+
+
